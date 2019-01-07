@@ -1,0 +1,19 @@
+{
+  "name": "rozgrywki.online",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matmikus/rozgrywki.online.git"
+  },
+  "author": "Mateusz Mikolajczak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matmikus/rozgrywki.online/issues"
+  },
+  "homepage": "https://github.com/matmikus/rozgrywki.online#readme"
+}
