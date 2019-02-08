@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "userId": { "type": "number" },
+    "competitionId": { "type": "number" },
+    "superModerator": { "type": "boolean" },
+    "competitors": { "type": "array", "items": { "type": "number" } }
+  },
+  "required": ["userId", "competitionId", "superModerator", "competitors"]
+}

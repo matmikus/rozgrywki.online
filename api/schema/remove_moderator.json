@@ -1,0 +1,8 @@
+{
+  "type": "object",
+  "properties": {
+    "userId": { "type": "number" },
+    "competitionId": { "type": "number" }
+  },
+  "required": ["userId", "competitionId"]
+}

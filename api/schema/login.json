@@ -1,0 +1,8 @@
+{
+  "type": "object",
+  "properties": {
+    "login": { "type": "text" },
+    "password": { "type": "text" }
+  },
+  "required": ["login", "password"]
+}

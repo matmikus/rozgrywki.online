@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "properties": {
+    "login": { "type": "string" },
+    "name": { "type": "string" },
+    "email": { "type": "string",  "pattern": "[^@]+@[^\\.]+\\..+" },
+    "linkName": { "type": "string" },
+    "password": { "type": "string" }
+  },
+  "required": ["login", "email", "linkName", "password"]
+}
