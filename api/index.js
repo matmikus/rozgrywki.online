@@ -23,8 +23,9 @@ const update_result = require('./routes/update_result')
 const add_moderator = require('./routes/add_moderator')
 const remove_moderator = require('./routes/remove_moderator')
 
-//body parser
-app.use(express.json());
+// Request body parser
+app.use(express.json())
+
 // Import API Routes
 app.use(users)
 app.use(add_user)
