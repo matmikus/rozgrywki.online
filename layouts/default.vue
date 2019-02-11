@@ -1,8 +1,6 @@
 <template>
-  <div>
     <nuxt/>
     <!--<my-footer/>-->
-  </div>
 </template>
 
 <script>
@@ -16,6 +14,9 @@ export default {
 </script>
 
 <style>
+  div#__layout, div#__nuxt {
+    height: 100%;
+  }
 .container
 {
   margin: 0;

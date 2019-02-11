@@ -1,5 +1,6 @@
 const express = require('express')
 const { Router } = require('express')
+const cookieParser = require('cookie-parser')
 const router = Router()
 
 // Create express instnace
@@ -10,7 +11,6 @@ const users = require('./routes/users')
 const add_user = require('./routes/add_user')
 const confirm_user = require('./routes/confirm_user')
 const login = require('./routes/login')
-const logout = require('./routes/logout')
 const get_settings = require('./routes/get_settings')
 const update_settings = require('./routes/update_settings')
 const get_profile = require('./routes/get_profile')
@@ -22,16 +22,17 @@ const update_competition = require('./routes/update_competition')
 const update_result = require('./routes/update_result')
 const add_moderator = require('./routes/add_moderator')
 const remove_moderator = require('./routes/remove_moderator')
+const authentication = require('./routes/authentication')
 
 // Request body parser
 app.use(express.json())
+app.use(cookieParser())
 
 // Import API Routes
 app.use(users)
 app.use(add_user)
 app.use(confirm_user)
 app.use(login)
-app.use(logout)
 app.use(get_settings)
 app.use(update_settings)
 app.use(get_profile)
@@ -43,6 +44,7 @@ app.use(update_competition)
 app.use(update_result)
 app.use(add_moderator)
 app.use(remove_moderator)
+app.use(authentication)
 
 // Export the server middleware
 module.exports = {
