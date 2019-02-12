@@ -47,7 +47,7 @@
         if (document.cookie === '') {
           return false
         }
-        return axios.get('/api/authentication', document.cookie).then(res => res.data).catch(e => false)
+        return axios.get('/api/authentication').then(res => res.data).catch(e => false)
       },
       async onLogInClicked () {
         const data = {login: this.login, password: sha1(this.password)}
@@ -61,9 +61,6 @@
       },
       onLogOutClicked () {
         document.cookie = 'Bearer' + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
-        document.cookie = 'userId' + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
-        document.cookie = 'userLogin' + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
-        document.cookie = 'userName' + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
         this.authenticated = false
       },
       logInRequest (data) {
@@ -95,5 +92,10 @@
   
   #form > * {
     margin: 8px;
+  }
+  
+  a {
+    cursor: pointer;
+    text-decoration: none;
   }
 </style>
