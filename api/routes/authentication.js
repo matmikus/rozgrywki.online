@@ -5,7 +5,7 @@ router.get('/authentication', (req, res) => {
   if (req.cookies.Bearer === undefined) {
     res.sendStatus(403)
   }
-  const secret = (process.env.JWT_SECRET_TOKEN !== undefined ? process.env.JWT_SECRET_TOKEN : require('../../local_postgres_config').localJsonWebTokenSecret())
+  const secret = process.env.JWT_SECRET_TOKEN
   jwt.verify(req.cookies.Bearer, secret, (err, decoded) => {
     if (err) {
       console.log(err)

@@ -19,5 +19,5 @@ build
 # Service worker
 sw.*
 
-# Local postgres config
-local_postgres_config.js
+# Local process.env config
+.env

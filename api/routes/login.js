@@ -16,7 +16,7 @@ router.post('/login', (req, res) => {
       const success = dbResult.rows.length === 1
       if (success) {
         const userData = dbResult.rows[0]
-        const secret = (process.env.JWT_SECRET_TOKEN !== undefined ? process.env.JWT_SECRET_TOKEN : require('../../local_postgres_config').localJsonWebTokenSecret())
+        const secret = process.env.JWT_SECRET_TOKEN
         const token = jwt.sign({ id: userData.userid, name: userData.name, login: userData.login }, secret)
         res.cookie('Bearer', token)
         
