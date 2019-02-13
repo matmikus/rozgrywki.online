@@ -8,10 +8,8 @@ router.get('/authentication', (req, res) => {
   const secret = process.env.JWT_SECRET_TOKEN
   jwt.verify(req.cookies.Bearer, secret, (err, decoded) => {
     if (err) {
-      console.log(err)
       res.sendStatus(403)
     } else {
-      console.log(decoded)
       res.sendStatus(200)
     }
   })
