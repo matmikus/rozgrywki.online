@@ -2,10 +2,10 @@ const {Client} = require('pg')
 
 module.exports = {
   databaseClient () {
-    const databaseClient = (process.env.DATABASE_URL !== undefined ? {
+    const databaseClient = {
       connectionString: process.env.DATABASE_URL,
-      ssl: true
-    } : require('../../local_postgres_config').localClientData())
+      ssl: process.env.DATABASE_SSL === 'true'
+    }
     
     const client = new Client(databaseClient)
     
