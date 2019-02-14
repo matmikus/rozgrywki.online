@@ -1,5 +1,4 @@
 const express = require('express')
-const { Router } = require('express')
 const cookieParser = require('cookie-parser')
 
 // Dev local import process.env from .env file
