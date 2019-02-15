@@ -21,3 +21,7 @@ sw.*
 
 # Local process.env config
 .env
+
+# Test coverage data
+coverage
+.nyc_output

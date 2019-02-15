@@ -13,16 +13,20 @@ router.post('/login', (req, res) => {
       text: 'select * from users where login=$1 and password=$2;',
       values: [req.body.login, req.body.password]
     }, (err, dbResult) => {
-      const success = dbResult.rows.length === 1
-      if (success) {
-        const userData = dbResult.rows[0]
-        const secret = process.env.JWT_SECRET_TOKEN
-        const token = jwt.sign({ id: userData.userid, name: userData.name, login: userData.login }, secret)
-        res.cookie('Bearer', token)
-        
-        res.send({ success: true })
+      if (err) {
+        res.sendStatus(500)
       } else {
-        res.send({ success: false, message: 'Błędny login lub hasło' })
+        const success = dbResult.rows.length === 1
+        if (success) {
+          const userData = dbResult.rows[0]
+          const secret = process.env.JWT_SECRET_TOKEN
+          const token = jwt.sign({ id: userData.userid, name: userData.name, login: userData.login }, secret)
+
+          res.cookie('Bearer', token)
+          res.send({ success: true })
+        } else {
+          res.send({ success: false, message: 'Błędny login lub hasło' })
+        }
       }
     })
   }
