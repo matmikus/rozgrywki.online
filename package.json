@@ -11,7 +11,7 @@
     "precommit": "npm run lint",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "heroku-postbuild": "npm run build",
-    "test-travis": "jest --coverage --coverageReporters=text-lcov | coveralls"
+    "test": "jest --coverage"
   },
   "dependencies": {
     "axios": "^0.16.2",
