@@ -1,7 +1,3 @@
-const {assert} = require('chai')
-
-suite('test suite', function () {
-  test('testing test', function () {
-    assert.isTrue(true)
-  })
+test('testing test', () => {
+  expect(true).toBe(true)
 })
