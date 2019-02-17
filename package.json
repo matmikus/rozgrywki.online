@@ -27,6 +27,7 @@
     "source-map-support": "^0.4.15"
   },
   "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "babel-eslint": "^7.2.3",
     "coveralls": "^3.0.2",
     "eslint": "^4.3.0",
@@ -43,7 +44,11 @@
     "collectCoverage": true,
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
-      "!**/node_modules/**"
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/plugins/**",
+      "!**/.nuxt/**",
+      "!nuxt.config.js"
     ]
   }
 }
