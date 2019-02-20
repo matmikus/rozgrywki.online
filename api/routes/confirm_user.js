@@ -1,7 +1,9 @@
 const router = require('express')()
 
 router.get('/confirm_user/:hash', (req, res) => {
-  res.send(req.params.hash)
+  // TODO: request's logic
+
+  res.send({ success: false })
 })
 
 module.exports = router

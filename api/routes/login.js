@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken')
 router.post('/login', (req, res) => {
   const validationResult = validator.getValidationErrors(req.body, schema)
   if (validationResult.length > 0) {
-    res.send(validationResult)
+    res.status(400).send(validationResult)
   } else {
     db.databaseClient().query({
       text: 'select * from users where login=$1 and password=$2;',
