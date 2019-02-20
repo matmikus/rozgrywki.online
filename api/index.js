@@ -8,7 +8,6 @@ require('dotenv').config()
 const app = express()
 
 // Require API routes
-const users = require('./routes/users')
 const addUser = require('./routes/add_user')
 const confirmUser = require('./routes/confirm_user')
 const login = require('./routes/login')
@@ -30,7 +29,6 @@ app.use(express.json())
 app.use(cookieParser())
 
 // Import API Routes
-app.use(users)
 app.use(addUser)
 app.use(confirmUser)
 app.use(login)
