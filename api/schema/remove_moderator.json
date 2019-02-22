@@ -1,8 +1,15 @@
 {
   "type": "object",
   "properties": {
-    "userId": { "type": "number" },
-    "competitionId": { "type": "number" }
+    "userId": {
+      "type": "number"
+    },
+    "competitionId": {
+      "type": "number"
+    }
   },
-  "required": ["userId", "competitionId"]
+  "required": [
+    "userId",
+    "competitionId"
+  ]
 }

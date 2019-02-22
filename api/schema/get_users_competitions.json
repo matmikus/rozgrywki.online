@@ -1,7 +1,11 @@
 {
   "type": "object",
   "properties": {
-    "userId": { "type": "number" }
+    "userId": {
+      "type": "number"
+    }
   },
-  "required": ["userId"]
+  "required": [
+    "userId"
+  ]
 }

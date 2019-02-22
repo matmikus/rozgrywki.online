@@ -1,10 +1,21 @@
 {
   "type": "object",
   "properties": {
-    "userId": { "type": "number" },
-    "email": { "type": "string", "pattern": "[^@]+@[^\\.]+\\..+" },
-    "linkName": { "type": "string" },
-    "password": { "type": "string" }
+    "userId": {
+      "type": "number"
+    },
+    "email": {
+      "type": "string",
+      "pattern": "[^@]+@[^\\.]+\\..+"
+    },
+    "linkName": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    }
   },
-  "required": ["userId"]
+  "required": [
+    "userId"
+  ]
 }

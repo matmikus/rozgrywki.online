@@ -1,23 +1,221 @@
 {
   "type": "object",
   "properties": {
-    "name": { "type": "string" },
-    "type": { "type": "string", "enum": ["cup", "group", "mixed"] },
-    "startDate": { "type": "string", "pattern": "^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$" },
-    "endDate": { "type": "string", "pattern": "^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$" },
-    "displayed": { "type": "boolean" },
-    "configured": { "type": "boolean" },
-    "directLinked": { "type": "boolean" },
-    "linkName": { "type": "string" },
-    "description": { "type": "string" },
-    "homePageLink": { "type": "string",  "pattern": "[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)" },
-    "registrationLink": { "type": "string", "pattern": "[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)" },
-    "registrationInfo": { "type": "string" },
-    "contactMail": { "type": "string",  "pattern": "[^@]+@[^\\.]+\\..+" },
-    "contactLink": { "type": "string", "pattern": "[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)" },
-    "contactInfo": { "type": "string" },
-    "startTime": { "type": "string", "pattern": "/^([01]\\d|2[0-3]):([0-5]\\d)$/" },
-    "endTime": { "type": "string", "pattern": "/^([01]\\d|2[0-3]):([0-5]\\d)$/" }
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "cup",
+        "group",
+        "mixed"
+      ]
+    },
+    "startDate": {
+      "type": "string",
+      "pattern": "^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$"
+    },
+    "endDate": {
+      "type": "string",
+      "pattern": "^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$"
+    },
+    "displayed": {
+      "type": "boolean"
+    },
+    "configured": {
+      "type": "boolean"
+    },
+    "directLinked": {
+      "type": "boolean"
+    },
+    "linkName": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "homePageLink": {
+      "type": "string",
+      "pattern": "[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+    },
+    "registrationLink": {
+      "type": "string",
+      "pattern": "[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+    },
+    "registrationInfo": {
+      "type": "string"
+    },
+    "contactMail": {
+      "type": "string",
+      "pattern": "[^@]+@[^\\.]+\\..+"
+    },
+    "contactLink": {
+      "type": "string",
+      "pattern": "[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+    },
+    "contactInfo": {
+      "type": "string"
+    },
+    "startTime": {
+      "type": "string",
+      "pattern": "/^([01]\\d|2[0-3]):([0-5]\\d)$/"
+    },
+    "endTime": {
+      "type": "string",
+      "pattern": "/^([01]\\d|2[0-3]):([0-5]\\d)$/"
+    },
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "anyOf": [
+          {
+            "properties": {
+              "size": {
+                "type": "number"
+              },
+              "odd": {
+                "type": "boolean"
+              },
+              "endSize": {
+                "type": "number"
+              },
+              "mixedPosition": {
+                "type": "number"
+              },
+              "mixedName": {
+                "type": "string"
+              },
+              "thirdPlaceGame": {
+                "type": "boolean"
+              },
+              "fifthPlaceCup": {
+                "type": "boolean"
+              },
+              "ninthPlaceCup": {
+                "type": "boolean"
+              },
+              "competitorsEntryPosition": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "brazilian": {
+                "type": "boolean"
+              },
+              "multipleGames": {
+                "type": "number"
+              },
+              "multipleWins": {
+                "type": "number"
+              },
+              "resultRequired": {
+                "type": "boolean"
+              },
+              "partialResultRequired": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "size",
+              "odd",
+              "endSize",
+              "thirdPlaceGame",
+              "fifthPlaceCup",
+              "ninthPlaceCup",
+              "competitorsEntryPosition",
+              "brazilian",
+              "resultRequired",
+              "partialResultRequired"
+            ]
+          },
+          {
+            "properties": {
+              "size": {
+                "type": "number"
+              },
+              "stages": {
+                "type": "number"
+              },
+              "mixedPosition": {
+                "type": "number"
+              },
+              "mixedName": {
+                "type": "string"
+              },
+              "roundsNames": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "winPoints": {
+                "type": "number"
+              },
+              "drawPoints": {
+                "type": "number"
+              },
+              "lossPoints": {
+                "type": "number"
+              },
+              "onePointWinPoints": {
+                "type": "number"
+              },
+              "onePointLossPoints": {
+                "type": "number"
+              },
+              "tableOrder": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "points",
+                    "wins",
+                    "ratio",
+                    "direct-game",
+                    "result-ratio",
+                    "partial-result-ratio",
+                    "result-balance"
+                  ]
+                }
+              },
+              "competitorsEntryPosition": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "resultRequired": {
+                "type": "boolean"
+              },
+              "partialResultRequired": {
+                "type": "boolean"
+              },
+              "drawEnable": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "size",
+              "stages",
+              "roundsNames",
+              "winPoints",
+              "drawPoints",
+              "lossPoints",
+              "tableOrder",
+              "competitorsEntryPosition",
+              "resultRequired",
+              "partialResultRequired",
+              "drawEnable"
+            ]
+          }
+        ]
+      }
+    }
   },
-  "required": ["name"]
+  "required": [
+    "name"
+  ]
 }

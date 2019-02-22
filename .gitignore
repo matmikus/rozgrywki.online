@@ -24,4 +24,3 @@ sw.*
 
 # Test coverage data
 coverage
-.nyc_output
