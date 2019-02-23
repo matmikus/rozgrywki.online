@@ -1,6 +1,6 @@
 const router = require('express')()
 const validator = require('./../shared/validator')
-const schema = require('./../schema/add_user')
+const schema = require('../schema/add_user-req')
 
 router.post('/add_user', (req, res) => {
   const validationResult = validator.getValidationErrors(req.body, schema)

@@ -1,5 +1,5 @@
 const router = require('express')()
-const schema = require('./../schema/add_competition')
+const schema = require('../schema/add_competition-req')
 const validator = require('./../shared/validator')
 const authentication = require('../shared/authentication')
 

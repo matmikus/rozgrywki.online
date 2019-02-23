@@ -1,6 +1,6 @@
 const router = require('express')()
 const validator = require('./../shared/validator')
-const schema = require('./../schema/update_result')
+const schema = require('../schema/update_result-req')
 
 router.post('/update_result', (req, res) => {
   const validationResult = validator.getValidationErrors(req.body, schema)

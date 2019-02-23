@@ -1,6 +1,6 @@
 const router = require('express')()
 const validator = require('./../shared/validator')
-const schema = require('./../schema/login')
+const schema = require('../schema/login-req')
 const db = require('./../shared/db')
 const jwt = require('jsonwebtoken')
 
