@@ -1,15 +1,23 @@
 const router = require('express')()
+const reqSchema = require('../schema/add_user-req')
+const resSchema = require('../schema/add_user-res')
 const validator = require('./../shared/validator')
-const schema = require('../schema/add_user-req')
 
 router.post('/add_user', (req, res) => {
-  const validationResult = validator.getValidationErrors(req.body, schema)
-  if (validationResult.length > 0) {
-    res.status(400).send(validationResult)
-  } else {
-    // TODO: request's logic
+  const reqValidation = validator.getValidationErrors(req.body, reqSchema)
+  if (reqValidation.length > 0) {
+    res.status(400).send(reqValidation)
+    return
+  }
 
-    res.send({ success: false })
+  // TODO: request's logic
+  let responseData = { success: false }
+
+  const resValidation = validator.getValidationErrors(responseData, resSchema)
+  if (resValidation.length > 0) {
+    res.sendStatus(500)
+  } else {
+    res.send(responseData)
   }
 })
 

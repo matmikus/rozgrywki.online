@@ -1,3 +1,80 @@
 {
-  "type": "object"
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "number"
+    },
+    "login": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "created": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$"
+    },
+    "lastActive": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$"
+    },
+    "linkName": {
+      "type": "string"
+    },
+    "competitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "competitionId": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "typeName": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          },
+          "displayed": {
+            "type": "boolean"
+          },
+          "configured": {
+            "type": "boolean"
+          },
+          "directLink": {
+            "type": "boolean"
+          },
+          "linkName": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "competitionId",
+          "name",
+          "displayed",
+          "configured",
+          "directLinked"
+        ]
+      }
+    }
+  },
+  "required": [
+    "userId",
+    "login",
+    "email",
+    "created",
+    "linkName"
+  ]
 }

@@ -1,12 +1,13 @@
 const router = require('express')()
-const schema = require('../schema/add_competition-req')
+const reqSchema = require('../schema/add_competition-req')
+const resSchema = require('../schema/add_competition-res')
 const validator = require('./../shared/validator')
 const authentication = require('../shared/authentication')
 
 router.post('/add_competition', (req, res) => {
-  const validationResult = validator.getValidationErrors(req.body, schema)
-  if (validationResult.length > 0) {
-    res.status(400).send(validationResult)
+  const reqValidation = validator.getValidationErrors(req.body, reqSchema)
+  if (reqValidation.length > 0) {
+    res.status(400).send(reqValidation)
     return
   }
 
@@ -17,8 +18,14 @@ router.post('/add_competition', (req, res) => {
   }
 
   // TODO: request's logic
+  let responseData = { success: false }
 
-  res.send({ success: false })
+  const resValidation = validator.getValidationErrors(responseData, resSchema)
+  if (resValidation.length > 0) {
+    res.sendStatus(500)
+  } else {
+    res.send(responseData)
+  }
 })
 
 module.exports = router

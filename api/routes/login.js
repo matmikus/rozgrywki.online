@@ -1,11 +1,12 @@
 const router = require('express')()
 const validator = require('./../shared/validator')
-const schema = require('../schema/login-req')
+const reqSchema = require('../schema/login-req')
+const resSchema = require('../schema/login-res')
 const db = require('./../shared/db')
 const jwt = require('jsonwebtoken')
 
 router.post('/login', (req, res) => {
-  const validationResult = validator.getValidationErrors(req.body, schema)
+  const validationResult = validator.getValidationErrors(req.body, reqSchema)
   if (validationResult.length > 0) {
     res.status(400).send(validationResult)
   } else {
@@ -16,6 +17,8 @@ router.post('/login', (req, res) => {
       if (err) {
         res.sendStatus(500)
       } else {
+        let responseData
+
         const success = dbResult.rows.length === 1
         if (success) {
           const userData = dbResult.rows[0]
@@ -23,9 +26,16 @@ router.post('/login', (req, res) => {
           const token = jwt.sign({ id: userData.userid, name: userData.name, login: userData.login }, secret)
 
           res.cookie('Bearer', token)
-          res.send({ success: true })
+          responseData = { success: true }
         } else {
-          res.send({ success: false, message: 'Błędny login lub hasło' })
+          responseData = { success: false, message: 'Błędny login lub hasło' }
+        }
+
+        const resValidation = validator.getValidationErrors(responseData, resSchema)
+        if (resValidation.length > 0) {
+          res.sendStatus(500)
+        } else {
+          res.send(responseData)
         }
       }
     })

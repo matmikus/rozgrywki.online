@@ -1,3 +1,443 @@
 {
-  "type": "object"
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "message": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "competitionId": {
+          "type": "number"
+        },
+        "userId": {
+          "type": "nubmer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "cup",
+            "group",
+            "mixed"
+          ]
+        },
+        "startDate": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$"
+        },
+        "endDate": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$"
+        },
+        "displayed": {
+          "type": "boolean"
+        },
+        "configured": {
+          "type": "boolean"
+        },
+        "directLinked": {
+          "type": "boolean"
+        },
+        "linkName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "homePageLink": {
+          "type": "string",
+          "pattern": "[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+        },
+        "registrationLink": {
+          "type": "string",
+          "pattern": "[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+        },
+        "registrationInfo": {
+          "type": "string"
+        },
+        "contactMail": {
+          "type": "string",
+          "pattern": "[^@]+@[^\\.]+\\..+"
+        },
+        "contactLink": {
+          "type": "string",
+          "pattern": "[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+        },
+        "contactInfo": {
+          "type": "string"
+        },
+        "startTime": {
+          "type": "string",
+          "pattern": "^(2[0-3]|[01][0-9]):[0-5][0-9]$"
+        },
+        "endTime": {
+          "type": "string",
+          "pattern": "^(2[0-3]|[01][0-9]):[0-5][0-9]$"
+        },
+        "lastUpdate": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]$"
+        },
+        "stages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "anyOf": [
+              {
+                "properties": {
+                  "size": {
+                    "type": "number"
+                  },
+                  "odd": {
+                    "type": "boolean"
+                  },
+                  "endSize": {
+                    "type": "number"
+                  },
+                  "mixedPosition": {
+                    "type": "number"
+                  },
+                  "mixedName": {
+                    "type": "string"
+                  },
+                  "thirdPlaceGame": {
+                    "type": "boolean"
+                  },
+                  "fifthPlaceCup": {
+                    "type": "boolean"
+                  },
+                  "ninthPlaceCup": {
+                    "type": "boolean"
+                  },
+                  "competitorsEntryPosition": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  "competitorsFinishPosition": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  "brazilian": {
+                    "type": "boolean"
+                  },
+                  "multipleGames": {
+                    "type": "number"
+                  },
+                  "multipleWins": {
+                    "type": "number"
+                  },
+                  "resultRequired": {
+                    "type": "boolean"
+                  },
+                  "partialResultRequired": {
+                    "type": "boolean"
+                  },
+                  "games": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "gameId": {
+                          "type": "number"
+                        },
+                        "gameNumber": {
+                          "type": "number"
+                        },
+                        "aCompetitorId": {
+                          "type": "number"
+                        },
+                        "bCompetitorId": {
+                          "type": "number"
+                        },
+                        "aResultType": {
+                          "type": "string"
+                        },
+                        "bResultType": {
+                          "type": "string"
+                        },
+                        "aResult": {
+                          "type": "number"
+                        },
+                        "bResult": {
+                          "type": "number"
+                        },
+                        "aPartialResult": {
+                          "type": "array",
+                          "items": {
+                            "type": "number"
+                          }
+                        },
+                        "bPartialResult": {
+                          "type": "array",
+                          "items": {
+                            "type": "number"
+                          }
+                        },
+                        "gameDate": {
+                          "type": "string",
+                          "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$"
+                        },
+                        "gameTime": {
+                          "type": "string",
+                          "pattern": "^(2[0-3]|[01][0-9]):[0-5][0-9]$"
+                        },
+                        "resultUpdate": {
+                          "type": "string",
+                          "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]$"
+                        },
+                        "resultDescription": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "gameId",
+                        "gameNumber",
+                        "aCompetitorId",
+                        "bCompetitorId",
+                        "aResultType",
+                        "bResultType",
+                        "aResult",
+                        "bResult",
+                        "aPartialResult",
+                        "bPartialResult",
+                        "gameDate",
+                        "gameTime",
+                        "resultUpdate",
+                        "resultDescription"
+                      ]
+                    }
+                  },
+                  "competitors": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "competitorId": {
+                          "type": "number"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "competitorId",
+                        "name"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "size",
+                  "odd",
+                  "endSize",
+                  "thirdPlaceGame",
+                  "fifthPlaceCup",
+                  "ninthPlaceCup",
+                  "competitorsEntryPosition",
+                  "brazilian",
+                  "resultRequired",
+                  "partialResultRequired"
+                ]
+              },
+              {
+                "properties": {
+                  "size": {
+                    "type": "number"
+                  },
+                  "stages": {
+                    "type": "number"
+                  },
+                  "mixedPosition": {
+                    "type": "number"
+                  },
+                  "mixedName": {
+                    "type": "string"
+                  },
+                  "roundsNames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "winPoints": {
+                    "type": "number"
+                  },
+                  "drawPoints": {
+                    "type": "number"
+                  },
+                  "lossPoints": {
+                    "type": "number"
+                  },
+                  "onePointWinPoints": {
+                    "type": "number"
+                  },
+                  "onePointLossPoints": {
+                    "type": "number"
+                  },
+                  "tableOrder": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "points",
+                        "wins",
+                        "ratio",
+                        "direct-game",
+                        "result-ratio",
+                        "partial-result-ratio",
+                        "result-balance"
+                      ]
+                    }
+                  },
+                  "competitorsEntryPosition": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  "competitorsFinishPosition": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  "resultRequired": {
+                    "type": "boolean"
+                  },
+                  "partialResultRequired": {
+                    "type": "boolean"
+                  },
+                  "drawEnable": {
+                    "type": "boolean"
+                  },
+                  "games": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "gameId": {
+                          "type": "number"
+                        },
+                        "gameNumber": {
+                          "type": "number"
+                        },
+                        "aCompetitorId": {
+                          "type": "number"
+                        },
+                        "bCompetitorId": {
+                          "type": "number"
+                        },
+                        "aResultType": {
+                          "type": "string"
+                        },
+                        "bResultType": {
+                          "type": "string"
+                        },
+                        "aResult": {
+                          "type": "number"
+                        },
+                        "bResult": {
+                          "type": "number"
+                        },
+                        "aPartialResult": {
+                          "type": "array",
+                          "items": {
+                            "type": "number"
+                          }
+                        },
+                        "bPartialResult": {
+                          "type": "array",
+                          "items": {
+                            "type": "number"
+                          }
+                        },
+                        "gameDate": {
+                          "type": "string",
+                          "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$"
+                        },
+                        "gameTime": {
+                          "type": "string",
+                          "pattern": "^(2[0-3]|[01][0-9]):[0-5][0-9]$"
+                        },
+                        "resultUpdate": {
+                          "type": "string",
+                          "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]$"
+                        },
+                        "resultDescription": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "gameId",
+                        "gameNumber",
+                        "aCompetitorId",
+                        "bCompetitorId",
+                        "aResultType",
+                        "bResultType",
+                        "aResult",
+                        "bResult",
+                        "aPartialResult",
+                        "bPartialResult",
+                        "gameDate",
+                        "gameTime",
+                        "resultUpdate",
+                        "resultDescription"
+                      ]
+                    }
+                  },
+                  "competitors": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "competitorId": {
+                          "type": "number"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "competitorId",
+                        "name"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "size",
+                  "stages",
+                  "roundsNames",
+                  "winPoints",
+                  "drawPoints",
+                  "lossPoints",
+                  "tableOrder",
+                  "competitorsEntryPosition",
+                  "resultRequired",
+                  "partialResultRequired",
+                  "drawEnable"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  },
+  "required": [
+    "success"
+  ]
 }

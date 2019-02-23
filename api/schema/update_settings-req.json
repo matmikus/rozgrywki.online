@@ -4,6 +4,9 @@
     "userId": {
       "type": "number"
     },
+    "name": {
+      "type": "string"
+    },
     "email": {
       "type": "string",
       "pattern": "[^@]+@[^\\.]+\\..+"
@@ -11,7 +14,10 @@
     "linkName": {
       "type": "string"
     },
-    "password": {
+    "oldPassword": {
+      "type": "string"
+    },
+    "newPassword": {
       "type": "string"
     }
   },
