@@ -1,14 +1,10 @@
 const validate = require('jsonschema').validate
+const $RefParser = require('json-schema-ref-parser')
 
 module.exports = {
-  getValidationErrors (data, schema) {
-    const validationResult = validate(data, schema)
-    
-    let errorList = []
-    validationResult.errors.forEach(el => {
-      errorList.push(el.stack)
-    })
-    
-    return errorList
+  getValidationErrors: async function (data, schema) {
+    const validationResult = validate(data, await $RefParser.dereference(schema))
+
+    return validationResult.errors.map(el => el.stack)
   }
 }

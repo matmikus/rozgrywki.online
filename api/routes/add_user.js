@@ -8,8 +8,8 @@ router.post('/add_user', (req, res) => {
   _validateRequestData(req, res)
 })
 
-function _validateRequestData (req, res) {
-  const reqValidation = validator.getValidationErrors(req.body, reqSchema)
+async function _validateRequestData (req, res) {
+  const reqValidation = await validator.getValidationErrors(req.body, reqSchema)
   if (reqValidation.length > 0) {
     res.status(400).send(reqValidation)
   } else {

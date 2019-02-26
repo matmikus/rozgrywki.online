@@ -8,8 +8,7 @@
       "type": "string"
     },
     "email": {
-      "type": "string",
-      "pattern": "[^@]+@[^\\.]+\\..+"
+      "$ref": "./definitions.json#/definitions/emailAddress"
     },
     "linkName": {
       "type": "string"
