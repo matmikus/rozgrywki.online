@@ -3,7 +3,7 @@ const reqSchema = require('../schema/update_result-req')
 const resSchema = require('../schema/update_result-res')
 const validator = require('./../shared/validator')
 
-router.post('/update_result', (req, res) => {
+router.put('/results', (req, res) => {
   const reqValidation = validator.getValidationErrors(req.body, reqSchema)
   if (reqValidation.length > 0) {
     res.status(400).send(reqValidation)

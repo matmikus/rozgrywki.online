@@ -1,19 +1,12 @@
 const router = require('express')()
-const reqSchema = require('../schema/add_moderator-req')
-const resSchema = require('../schema/add_moderator-res')
+const reqSchema = require('../schema/delete_moderator-req')
+const resSchema = require('../schema/delete_moderator-res')
 const validator = require('./../shared/validator')
-const authentication = require('../shared/authentication')
 
-router.post('/add_moderator', (req, res) => {
+router.delete('/moderators', (req, res) => {
   const reqValidation = validator.getValidationErrors(req.body, reqSchema)
   if (reqValidation.length > 0) {
     res.status(400).send(reqValidation)
-    return
-  }
-
-  const userData = authentication.getUserData(req.cookies)
-  if (!userData) {
-    res.sendStatus(404)
     return
   }
 

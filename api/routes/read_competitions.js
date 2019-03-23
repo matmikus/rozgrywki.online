@@ -1,14 +1,16 @@
+const db = require('./../shared/db')
 const router = require('express')()
-const reqSchema = require('../schema/remove_moderator-req')
-const resSchema = require('../schema/remove_moderator-res')
 const validator = require('./../shared/validator')
+const resSchema = require('../schema/read_competitions-res')
 
-router.post('/remove_moderator', (req, res) => {
-  const reqValidation = validator.getValidationErrors(req.body, reqSchema)
-  if (reqValidation.length > 0) {
-    res.status(400).send(reqValidation)
-    return
-  }
+router.get('/competitions', (req, res) => {
+  db.databaseClient().query('select * from competitions;', (err, dbResult) => {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(dbResult.rows)
+    }
+  })
 
   // TODO: request's logic
   let responseData = { success: false }

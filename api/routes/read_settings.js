@@ -1,15 +1,8 @@
 const router = require('express')()
-const reqSchema = require('../schema/get_settings-req')
-const resSchema = require('../schema/get_settings-res')
+const resSchema = require('../schema/read_settings-res')
 const validator = require('./../shared/validator')
 
-router.post('/get_settings', (req, res) => {
-  const reqValidation = validator.getValidationErrors(req.body, reqSchema)
-  if (reqValidation.length > 0) {
-    res.status(400).send(reqValidation)
-    return
-  }
-
+router.get('/profiles/:id/settings', (req, res) => {
   // TODO: request's logic
   let responseData = { success: false }
 

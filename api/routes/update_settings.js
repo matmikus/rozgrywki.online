@@ -3,7 +3,7 @@ const reqSchema = require('../schema/update_settings-req')
 const resSchema = require('../schema/update_settings-res')
 const validator = require('./../shared/validator')
 
-router.post('/update_settings', (req, res) => {
+router.put('/profiles/settings', (req, res) => {
   const reqValidation = validator.getValidationErrors(req.body, reqSchema)
   if (reqValidation.length > 0) {
     res.status(400).send(reqValidation)

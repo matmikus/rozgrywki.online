@@ -1,17 +1,8 @@
-const db = require('./../shared/db')
 const router = require('express')()
+const resSchema = require('../schema/read_profile-res')
 const validator = require('./../shared/validator')
-const resSchema = require('../schema/get_competitions-res')
 
-router.get('/get_competitions', (req, res) => {
-  db.databaseClient().query('select * from competitions;', (err, dbResult) => {
-    if (err) {
-      console.log(err)
-    } else {
-      console.log(dbResult.rows)
-    }
-  })
-
+router.post('/profiles/:id', (req, res) => {
   // TODO: request's logic
   let responseData = { success: false }
 

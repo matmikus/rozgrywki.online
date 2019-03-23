@@ -1,12 +1,19 @@
 const router = require('express')()
-const reqSchema = require('../schema/update_competition-req')
-const resSchema = require('../schema/update_competition-res')
+const reqSchema = require('../schema/create_moderator-req')
+const resSchema = require('../schema/create_moderator-res')
 const validator = require('./../shared/validator')
+const authentication = require('../shared/authentication')
 
-router.put('/competitions', (req, res) => {
+router.post('/moderators', (req, res) => {
   const reqValidation = validator.getValidationErrors(req.body, reqSchema)
   if (reqValidation.length > 0) {
     res.status(400).send(reqValidation)
+    return
+  }
+
+  const userData = authentication.getUserData(req.cookies)
+  if (!userData) {
+    res.sendStatus(404)
     return
   }
 

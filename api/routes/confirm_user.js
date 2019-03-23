@@ -1,8 +1,15 @@
 const router = require('express')()
+const reqSchema = require('../schema/confirm_user-req')
 const resSchema = require('../schema/confirm_user-res')
 const validator = require('./../shared/validator')
 
-router.get('/confirm_user/:hash', (req, res) => {
+router.post('/confirm_user', (req, res) => {
+  const reqValidation = validator.getValidationErrors(req.body, reqSchema)
+  if (reqValidation.length > 0) {
+    res.status(400).send(reqValidation)
+    return
+  }
+
   // TODO: request's logic
   let responseData = { success: false }
 

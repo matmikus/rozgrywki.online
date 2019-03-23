@@ -1,10 +1,10 @@
 const router = require('express')()
-const reqSchema = require('../schema/add_user-req')
-const resSchema = require('../schema/add_user-res')
+const reqSchema = require('../schema/create_user-req')
+const resSchema = require('../schema/create_user-res')
 const validator = require('./../shared/validator')
 const db = require('./../shared/db')
 
-router.post('/add_user', (req, res) => {
+router.post('/users', (req, res) => {
   _validateRequestData(req, res)
 })
 
