@@ -1,11 +1,11 @@
 const router = require('express')()
 const validator = require('./../shared/validator')
-const reqSchema = require('../schema/login-req')
-const resSchema = require('../schema/login-res')
+const reqSchema = require('../schema/create_session-req')
+const resSchema = require('../schema/create_session-res')
 const db = require('./../shared/db')
 const jwt = require('jsonwebtoken')
 
-router.post('/login', (req, res) => {
+router.post('/session', (req, res) => {
   const validationResult = validator.getValidationErrors(req.body, reqSchema)
   if (validationResult.length > 0) {
     res.status(400).send(validationResult)
@@ -35,7 +35,7 @@ router.post('/login', (req, res) => {
         if (resValidation.length > 0) {
           res.sendStatus(500)
         } else {
-          res.send(responseData)
+          res.status(200).send(responseData)
         }
       }
     })

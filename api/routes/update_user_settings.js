@@ -1,9 +1,9 @@
 const router = require('express')()
-const reqSchema = require('../schema/update_settings-req')
-const resSchema = require('../schema/update_settings-res')
+const reqSchema = require('../schema/update_user_settings-req')
+const resSchema = require('../schema/update_user_settings-res')
 const validator = require('./../shared/validator')
 
-router.put('/profiles/settings', (req, res) => {
+router.put('/users/settings', (req, res) => {
   const reqValidation = validator.getValidationErrors(req.body, reqSchema)
   if (reqValidation.length > 0) {
     res.status(400).send(reqValidation)
@@ -17,7 +17,8 @@ router.put('/profiles/settings', (req, res) => {
   if (resValidation.length > 0) {
     res.sendStatus(500)
   } else {
-    res.send(responseData)
+    res.status(200).send(responseData)
+    // res.status(404).send(responseData) // if not exist
   }
 })
 

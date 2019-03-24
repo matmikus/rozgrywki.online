@@ -20,9 +20,9 @@
 
 <script>
   import axios from '~/plugins/axios'
-  
+
   const sha1 = require('sha1')
-  
+
   export default {
     data () {
       return {
@@ -47,7 +47,7 @@
         if (document.cookie === '') {
           return false
         }
-        return axios.get('/api/authentication').then(res => res.data).catch(e => false)
+        return axios.get('/api/read_authentication').then(res => res.data).catch(e => false)
       },
       async onLogInClicked () {
         const data = {login: this.login, password: sha1(this.password)}
@@ -79,21 +79,21 @@
     height: 100%;
     flex-direction: column;
   }
-  
+
   div {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  
+
   #app > div {
     margin: 8px;
   }
-  
+
   #form > * {
     margin: 8px;
   }
-  
+
   a {
     cursor: pointer;
     text-decoration: none;

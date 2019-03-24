@@ -1,10 +1,10 @@
 const router = require('express')()
-const reqSchema = require('../schema/create_user-req')
-const resSchema = require('../schema/create_user-res')
+const reqSchema = require('../schema/create_user_unconfirmed-req')
+const resSchema = require('../schema/create_user_unconfirmed-res')
 const validator = require('./../shared/validator')
 const db = require('./../shared/db')
 
-router.post('/users', (req, res) => {
+router.post('/users/unconfirmed', (req, res) => {
   _validateRequestData(req, res)
 })
 
@@ -51,7 +51,7 @@ function _validateResponseData (responseData, res) {
 }
 
 function _sendResponse (responseData, res) {
-  res.send(responseData)
+  res.status(200).send(responseData)
 }
 
 module.exports = router

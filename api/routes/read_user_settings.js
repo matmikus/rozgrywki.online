@@ -1,8 +1,8 @@
 const router = require('express')()
-const resSchema = require('../schema/read_settings-res')
+const resSchema = require('../schema/read_user_settings-res')
 const validator = require('./../shared/validator')
 
-router.get('/profiles/:id/settings', (req, res) => {
+router.get('/users/:id/settings', (req, res) => {
   // TODO: request's logic
   let responseData = { success: false }
 
@@ -10,7 +10,8 @@ router.get('/profiles/:id/settings', (req, res) => {
   if (resValidation.length > 0) {
     res.sendStatus(500)
   } else {
-    res.send(responseData)
+    res.status(200).send(responseData)
+    // res.status(404).send(responseData) // if not exist
   }
 })
 

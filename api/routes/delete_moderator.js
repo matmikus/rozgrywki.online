@@ -17,7 +17,7 @@ router.delete('/moderators', (req, res) => {
   if (resValidation.length > 0) {
     res.sendStatus(500)
   } else {
-    res.send(responseData)
+    res.status(200).send(responseData)
   }
 })
 

@@ -17,7 +17,8 @@ router.put('/competitions', (req, res) => {
   if (resValidation.length > 0) {
     res.sendStatus(500)
   } else {
-    res.send(responseData)
+    res.status(200).send(responseData)
+    // res.status(404).send(responseData) // if not exist
   }
 })
 
