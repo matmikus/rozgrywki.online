@@ -13,7 +13,7 @@ router.get('/competitions', (req, res) => {
   })
 
   // TODO: request's logic
-  let responseData = { success: false }
+  let responseData = { success: false, message: 'brak danych' }
 
   const resValidation = validator.getValidationErrors(responseData, resSchema)
   if (resValidation.length > 0) {
